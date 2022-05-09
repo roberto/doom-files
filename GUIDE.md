@@ -30,11 +30,17 @@ emacs -nw
 
 ## Running as daemon
 
+> For HomeBrew installation, use `brew info` to check if there are related instructions.
+> 
+> e.g: `brew info emacs-plus@28`
+
 Starting the daemon:
 
 ```sh
 emacs --daemon
 ```
+
+Alternatives: [EmacsWiki/EmacsDaemon](https://www.emacswiki.org/emacs/EmacsAsDaemon)
 
 Connecting to it:
 
@@ -53,10 +59,27 @@ alias edaemon="emacs --daemon"
 alias erestart="ekill && edaemon"
 ```
 
+## Creating "apps" (MacOS)
 
+Using the application `Script Editor`:
 
-| sdfa       | adfa |
-|------------|------|
-| adfa adfaf | adf  |
+```
+tell application "Terminal"
+    do shell script "/usr/local/bin/emacsclient --create-frame --no-wait"
+end tell
+tell application "Emacs" to activate
+return
+```
 
+**Export** it `~/Applications/Emacs Client` using the `File Format` `Application`, as shown bellow:
+
+![docs/images/export-app.png](docs/images/export-app.png)
+
+### Setting the icon
+
+Copy the icon from the emacs installation to your generated application. Example:
+
+```
+cp /usr/local/opt/emacs-plus@28/Emacs.app/Contents/Resources/Emacs.icns ~/Applications/Emacs\ Client.app/Contents/Resources/applet.icns
+```
 

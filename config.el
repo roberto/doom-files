@@ -26,6 +26,12 @@
   (setq lsp-semantic-tokens-enable t)
   (add-hook 'lsp-after-apply-edits-hook (lambda (&rest _) (save-buffer)))) ;; save buffers after renaming
 
+
+(use-package! treemacs
+  :config
+  (setq treemacs-text-scale -1)
+  (treemacs-follow-mode t))
+
 ;; which-key delay time
 
 (setq which-key-idle-delay 0.3

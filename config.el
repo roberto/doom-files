@@ -6,7 +6,8 @@
 
 ;; visual
 
-(setq doom-font (font-spec :family "JetBrainsMono Nerd Font Mono" :size 14) ;; Make sure to use a font you have installed
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font Mono" :size 14)
+      doom-unicode-font (font-spec :family "JetBrainsMono Nerd Font Mono" :size 14)
       doom-theme 'doom-dracula)
 
 (setq display-line-numbers-type t)

@@ -18,6 +18,10 @@
 (setq read-process-output-max (* 1024 1024)
       projectile-enable-caching nil)
 
+(after! projectile
+  (add-to-list 'projectile-project-root-files-bottom-up "pubspec.yaml")
+  (add-to-list 'projectile-project-root-files-bottom-up "project.clj"))
+
 ;; lsp tweaks
 
 (use-package! lsp-mode

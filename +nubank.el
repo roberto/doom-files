@@ -6,3 +6,5 @@
   (when (file-directory-p nudev-emacs-path)
     (add-to-list 'load-path nudev-emacs-path)
     (require 'nu nil t)))
+
+(add-to-list 'projectile-project-search-path "~/dev/nu/mini-meta-repo/packages")

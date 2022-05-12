@@ -30,7 +30,7 @@ emacs -nw
 
 ## Running as daemon
 
-> For HomeBrew installation, use `brew info` to check if there are related instructions.
+> For HomeBrew installations, use `brew info [...]` to check if there are related instructions.
 > 
 > e.g: `brew info emacs-plus@28`
 
@@ -48,7 +48,7 @@ Connecting to it:
 emacsclient -nw
 ```
 
-## Aliases
+## Example of aliases
 
 `.zshrc` or similar:
 
@@ -59,21 +59,31 @@ alias edaemon="emacs --daemon"
 alias erestart="ekill && edaemon"
 ```
 
-## Creating "apps" (MacOS)
+## Creating an "app" (MacOS)
 
 Using the application `Script Editor`:
 
 ```
 tell application "Terminal"
-    do shell script "/usr/local/bin/emacsclient --create-frame --no-wait"
+	set frames to do shell script "/usr/local/bin/emacsclient -a '' --eval '(frames-on-display-list)'"
+	if (frames does not contain "Doom") then
+		do shell script "/usr/local/bin/emacsclient --create-frame --no-wait"
+	end if
+	quit
 end tell
 tell application "Emacs" to activate
-return
 ```
 
 **Export** it `~/Applications/Emacs Client` using the `File Format` `Application`, as shown bellow:
 
 ![docs/images/export-app.png](docs/images/export-app.png)
+
+Configure the application `Terminal` to never ask to close, going to `Preferences → Profiles → Shell` and change the options as bellow:
+
+* When the shell exits: Close if the shell exited cleanly
+* Ask before closing: Never
+
+![docs/images/terminal-close.png](docs/images/terminal-close.png)
 
 ### Setting the icon
 
@@ -82,4 +92,3 @@ Copy the icon from the emacs installation to your generated application. Example
 ```
 cp /usr/local/opt/emacs-plus@28/Emacs.app/Contents/Resources/Emacs.icns ~/Applications/Emacs\ Client.app/Contents/Resources/applet.icns
 ```
-

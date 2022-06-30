@@ -20,6 +20,8 @@
        yaml                ; 
 ```
 
+I recommend to use via GUI, since there are features that aren't available for terminals. Even though, there are a few tips to run from terminals in the end of this file.
+
 ## Running inside the terminal
 
 Enable `tty` in the `init.el` and start emacs using `--no-window-system` option:

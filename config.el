@@ -19,9 +19,13 @@
 (setq read-process-output-max (* 1024 1024)
       projectile-enable-caching nil)
 
+;; projects
+
 (after! projectile
   (add-to-list 'projectile-project-root-files-bottom-up "pubspec.yaml")
   (add-to-list 'projectile-project-root-files-bottom-up "project.clj"))
+
+(setq projectile-project-search-path '("~/dev/side")) ;; side projects
 
 ;; lsp tweaks
 

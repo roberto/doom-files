@@ -5,9 +5,15 @@
 
 ;; visual
 
+(setq catppuccin-flavor 'macchiato) ;; 'frappe, 'latte, 'macchiato, or 'mocha
+
 (setq doom-font (font-spec :family "JetBrainsMono Nerd Font Mono" :size 14)
       doom-unicode-font (font-spec :family "JetBrainsMono Nerd Font Mono" :size 14)
-      doom-theme 'doom-dracula)
+      doom-theme 'catppuccin)
+
+(custom-theme-set-faces! 'catppuccin
+  '(line-number :foreground "#ADADAD")
+  '(line-number-current-line :foreground "#C6C6C6"))
 
 (setq display-line-numbers-type t)
 
@@ -34,6 +40,9 @@
   (setq lsp-semantic-tokens-enable t)
   (add-hook 'lsp-after-apply-edits-hook (lambda (&rest _) (save-buffer)))) ;; save buffers after renaming
 
+(use-package! flycheck
+  :config
+  (setq flycheck-check-syntax-automatically '(save)))
 
 (use-package! treemacs
   :config
